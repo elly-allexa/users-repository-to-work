@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App &#x26C5;</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link href="src/styles.css" rel="stylesheet" type="text/css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <form class="row g-2" id="city-search">
+        <div class="col-7">
+          <input
+            type="text"
+            class="form-control"
+            id="inputText"
+            placeholder="Enter a city..."
+          />
+        </div>
+        <div class="col-auto">
+          <button type="submit" class="btn btn-secondary" id="search-button">
+            <em>Search</em>
+          </button>
+        </div>
+        <div class="col-auto">
+          <button
+            class="btn btn-secondary"
+            type="submit"
+            id="currentLocationButton"
+          >
+            <em>Current</em>
+          </button>
+        </div>
+      </form>
+      <div class="row" id="weather-conditions">
+        <div class="col-4">
+          <section class="city">
+            <h1 id="app-city"></h1>
+          </section>
+          <header class="description">
+            <div id="data">13/01 Friday 02:17</div>
+            <div class="sonditions-style" id="conditions"></div>
+            <span id="humidity"> Humidity :</span>
+            <span id="wind">Wind : km</span>
+          </header>
+        </div>
+        <div class="col-4" id="weather-icon">
+          <img src="src/images/sun&cl.png" alt="" width="120" />
+        </div>
+        <div class="col-4">
+          <section class="temperature">
+            <h2>
+              <span id="temp"></span>
+              <span> °C </span>
+            </h2>
+          </section>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-2">
+          <em> Fri</em>
+          <img src="src/images/rain.png" alt="" width="50" />
+          <section class="fri"><span>-2°C</span>+1°C</section>
+        </div>
+        <div class="col-2">
+          <em> Sat</em>
+          <img src="src/images/cloud.png" alt="" width="50" />
+          <section class="sat"><span>+1°C</span>+3°C</section>
+        </div>
+        <div class="col-2">
+          <em> Sun</em>
+          <img src="src/images/rain.png" alt="" width="50" />
+          <section class="sun"><span>+1°C</span>+7°C</section>
+        </div>
+        <div class="col-2">
+          <em> Mon</em>
+          <img src="src/images/snow.png" alt="" width="50" />
+          <section class="mon"><span>+1°C</span>+7°C</section>
+        </div>
+        <div class="col-2">
+          <em>Tue</em>
+          <img src="src/images/cloud.png" alt="" width="50" />
+          <section class="tue"><span> +1°C</span>+5°C</section>
+        </div>
+        <div class="col-2">
+          <em>Wed</em>
+          <img src="src/images/sun&cl.png" alt="" width="50" />
+          <section class="wed"><span> +2°C</span>+6°C</section>
+        </div>
+      </div>
+      <small class="author">
+        <a class="author-link" href="https://github.com/JustMuratova"
+          >Open-source code</a
+        >
+        by Olena Muratova</small
+      >
+    </div>
+    <script src="src/index.js"></script>
+  </body>
+</html>
