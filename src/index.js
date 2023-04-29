@@ -77,11 +77,13 @@ let button = document.querySelector("button#search-button");
 button.addEventListener("click", submitCity);
 
 function realPosition(position) {
-  let apiKey = "6576b922bfe6a5322a2e40d1f20f6b5c";
-  let lat = position.coords.latitude;
-  let lon = position.coords.longitude;
-  let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
-  axios.get(url).then(comonnWeather);
+  let longitude = position.coords.longitude;
+  let latitude = position.coords.latitude;
+  let apiKey = `462ddfcdo6b39797fbf3801t94bacc7f`;
+  let units = `metric`;
+  let apiEndpoint = `https://api.shecodes.io/weather/v1/current`;
+  let apiUrl = `${apiEndpoint}?lon=${longitude}&lat=${latitude}&key=${apiKey}&units=${units}`;
+  axios.get(apiUrl).then(comonnWeather);
 }
 
 function showNow(event) {
