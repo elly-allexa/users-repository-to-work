@@ -16,7 +16,7 @@
   </head>
   <body>
     <div class="container">
-      <form class="row g-2" id="city-search">
+      <form class="row g-2 search-engine" id="city-search">
         <div class="col-7">
           <input
             type="text"
@@ -48,8 +48,8 @@
           <header class="description">
             <div id="current-time"></div>
             <div class="sonditions-style" id="conditions"></div>
-            <span id="humidity"> Humidity :</span>
-            <span id="wind">Wind : km</span>
+            <span id="humidity"></span>
+            <span id="wind"></span>
           </header>
         </div>
         <div class="col-4">
@@ -74,38 +74,7 @@
           </section>
         </div>
       </div>
-      <div class="row">
-        <div class="col-2">
-          <em> Fri</em>
-          <img src="" alt="" width="50" />
-          <section class="fri"><span>-2°C</span>+1°C</section>
-        </div>
-        <div class="col-2">
-          <em> Sat</em>
-          <img src="" alt="" width="50" />
-          <section class="sat"><span>+1°C</span>+3°C</section>
-        </div>
-        <div class="col-2">
-          <em> Sun</em>
-          <img src="" alt="" width="50" />
-          <section class="sun"><span>+1°C</span>+7°C</section>
-        </div>
-        <div class="col-2">
-          <em> Mon</em>
-          <img src="" alt="" width="50" />
-          <section class="mon"><span>+1°C</span>+7°C</section>
-        </div>
-        <div class="col-2">
-          <em>Tue</em>
-          <img src="" alt="" width="50" />
-          <section class="tue"><span> +1°C</span>+5°C</section>
-        </div>
-        <div class="col-2">
-          <em>Wed</em>
-          <img src="" alt="" width="50" />
-          <section class="wed"><span> +2°C</span>+6°C</section>
-        </div>
-      </div>
+      <div class="px-1 py-1" id="forecast"></div>
       <small class="author">
         <a class="author-link" href="https://github.com/JustMuratova"
           >Open-source code</a
