@@ -47,6 +47,15 @@ span {
   margin-top: 20px;
 }
 
+.sonditions-style::first-letter {
+  text-transform: capitalize;
+}
+
+.icon-style {
+  position: relative;
+  top: 12px;
+}
+
 .row .col-2 {
   color: rgb(90, 98, 117);
   font-size: 23px;

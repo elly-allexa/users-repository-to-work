@@ -40,27 +40,31 @@ function dTime() {
   currentDate.innerHTML = appDate;
 }
 dTime();
-//
 
 function comonnWeather(response) {
-  let temperature = Math.round(response.data.main.temp);
-  document.querySelector("#app-city").innerHTML = response.data.name;
+  console.log(response);
+  let temperature = Math.round(response.data.temperature.current);
+  document.querySelector("#app-city").innerHTML = response.data.city;
   document.querySelector("#temp").innerHTML = `${temperature}`;
   document.querySelector("#wind").innerHTML = `Wind: ${Math.round(
     response.data.wind.speed
   )}km`;
   document.querySelector(
     "#humidity"
-  ).innerHTML = `Humidity : ${response.data.main.humidity}%`;
+  ).innerHTML = `Humidity : ${response.data.temperature.humidity}%`;
   document.querySelector("#conditions").innerHTML =
-    response.data.weather[0].main;
-  document.querySelector("#weather-icon").innerHTML = null;
+    response.data.condition.description;
+  let icon = response.data.condition.icon_url;
+  let iconSign = document.querySelector("#icon");
+  iconSign.setAttribute("src", `${icon}`);
+  iconSign.setAttribute("alt", response.data.condition.description);
 }
 
 function search(city) {
-  let units = "metric";
-  let apiKey = "6576b922bfe6a5322a2e40d1f20f6b5c";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
+  let apiKey = `462ddfcdo6b39797fbf3801t94bacc7f`;
+  let units = `metric`;
+  let endApiUrl = `https://api.shecodes.io/weather/v1/current`;
+  let apiUrl = `${endApiUrl}?query=${city}&key=${apiKey}&units=${units}`;
   axios.get(apiUrl).then(comonnWeather);
 }
 function submitCity(event) {
