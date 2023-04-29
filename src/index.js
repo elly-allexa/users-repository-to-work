@@ -73,7 +73,8 @@ function getDayAndMonth(timestamp) {
 
 function comonnWeather(response) {
   console.log(response);
-  let temperature = Math.round(response.data.temperature.current);
+  celsiusTemperature = response.data.temperature.current;
+  let temperature = Math.round(celsiusTemperature);
   let temperatureElement = document.querySelector("#temp");
   let city = response.data.city;
   let cityElement = document.querySelector("#app-city");
@@ -128,8 +129,33 @@ function showNow(event) {
   navigator.geolocation.getCurrentPosition(realPosition);
 }
 
+function showFahrenheitTemperature(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#temp");
+  celsiusLink.classList.remove("active");
+  fahrenheitLink.classList.add("active");
+  let fahrenheitTemperature = Math.round((celsiusTemperature * 9) / 5 + 32);
+  temperatureElement.innerHTML = fahrenheitTemperature;
+}
+
+function showCelsiusTemperature(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#temp");
+  fahrenheitLink.classList.remove("active");
+  celsiusLink.classList.add("active");
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
+}
+
+let celsiusTemperature = null;
+
 let button = document.querySelector("button#search-button");
 button.addEventListener("click", submitCity);
 
 let currentButton = document.querySelector("#currentLocationButton");
 currentButton.addEventListener("click", showNow);
+
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", showFahrenheitTemperature);
+
+let celsiusLink = document.querySelector("#celsius-link");
+celsiusLink.addEventListener("click", showCelsiusTemperature);

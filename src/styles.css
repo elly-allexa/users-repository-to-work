@@ -26,16 +26,27 @@ span {
   font-weight: 700;
 }
 
-.temperature h2 {
+.temperature {
   position: relative;
   font-size: 40px;
   right: 24px;
-  bottom: -20px;
+  top: 20px;
   min-width: 300px;
   padding: 40px 0px 0px 0px;
   color: rgb(90, 98, 117);
   font-family: "Cerebri Sans", Helvetica, Arial, sans-serif;
   font-weight: 700;
+}
+
+.celsius-link-style,
+.fahrenheit-link-style {
+  text-decoration: none;
+  color: cornflowerblue;
+}
+
+.active {
+  color: #272044;
+  cursor: default;
 }
 
 .description {
