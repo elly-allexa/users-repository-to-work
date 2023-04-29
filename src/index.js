@@ -74,22 +74,28 @@ function getDayAndMonth(timestamp) {
 function comonnWeather(response) {
   console.log(response);
   let temperature = Math.round(response.data.temperature.current);
+  let temperatureElement = document.querySelector("#temp");
+  let city = response.data.city;
+  let cityElement = document.querySelector("#app-city");
+  let wind = Math.round(response.data.wind.speed);
+  let windElement = document.querySelector("#wind");
+  let humidity = response.data.temperature.humidity;
+  let humidityElement = document.querySelector("#humidity");
+  let condition = response.data.condition.description;
+  let conditionElement = document.querySelector("#conditions");
   let icon = response.data.condition.icon_url;
-  let iconSign = document.querySelector("#icon");
+  let iconElement = document.querySelector("#icon");
   let now = new Date();
   let time = document.querySelector("#current-time");
-  document.querySelector("#app-city").innerHTML = response.data.city;
-  document.querySelector("#temp").innerHTML = `${temperature}`;
-  document.querySelector("#wind").innerHTML = `Wind: ${Math.round(
-    response.data.wind.speed
-  )}km`;
-  document.querySelector(
-    "#humidity"
-  ).innerHTML = `Humidity : ${response.data.temperature.humidity}%`;
-  document.querySelector("#conditions").innerHTML =
-    response.data.condition.description;
-  iconSign.setAttribute("src", `${icon}`);
-  iconSign.setAttribute("alt", response.data.condition.description);
+
+  temperatureElement.innerHTML = `${temperature}`;
+  cityElement.innerHTML = `${city}`;
+  windElement.innerHTML = `Wind: ${wind}km`;
+  humidityElement.innerHTML = `Humidity : ${humidity}%`;
+  conditionElement.innerHTML = `${condition}`;
+  iconElement.setAttribute("src", `${icon}`);
+  iconElement.setAttribute("alt", condition);
+
   time.innerHTML = formatDate(now);
 }
 

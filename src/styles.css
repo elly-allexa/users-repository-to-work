@@ -56,6 +56,11 @@ span {
   top: 12px;
 }
 
+.current-city {
+  position: relative;
+  left: 36px;
+}
+
 .row .col-2 {
   color: rgb(90, 98, 117);
   font-size: 23px;
