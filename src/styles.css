@@ -78,17 +78,6 @@ span {
   left: 57px;
 }
 
-.author {
-  position: relative;
-  top: 40px;
-  left: -15px;
-  font-weight: 600;
-}
-
-.author-link {
-  text-decoration: none;
-}
-
 .forecast-week-day {
   font-size: 19px;
   color: rgb(90, 98, 117);
@@ -136,4 +125,15 @@ span {
   border-radius: 10px;
   border: none;
   background: #eaeaea;
+}
+
+.author {
+  position: relative;
+  top: 40px;
+  left: -15px;
+  font-weight: 600;
+}
+
+.author-link {
+  text-decoration: none;
 }
