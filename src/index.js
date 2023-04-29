@@ -72,7 +72,6 @@ function getDayAndMonth(timestamp) {
 }
 
 function comonnWeather(response) {
-  console.log(response);
   celsiusTemperature = response.data.temperature.current;
   let temperature = Math.round(celsiusTemperature);
   let temperatureElement = document.querySelector("#temp");
@@ -108,10 +107,14 @@ function search(city) {
   axios.get(apiUrl).then(comonnWeather);
 }
 
-function submitCity(event) {
+function defaultCity(event) {
   event.preventDefault();
-  let city = document.querySelector("#inputText").value;
-  search(city);
+  let searchInput = document.querySelector("#inputText").value;
+  if (!searchInput || searchInput === undefined) {
+    alert("Please, enter your city ☁️💫");
+  } else {
+    search(searchInput);
+  }
 }
 
 function realPosition(position) {
@@ -149,7 +152,7 @@ function showCelsiusTemperature(event) {
 let celsiusTemperature = null;
 
 let button = document.querySelector("button#search-button");
-button.addEventListener("click", submitCity);
+button.addEventListener("click", defaultCity);
 
 let currentButton = document.querySelector("#currentLocationButton");
 currentButton.addEventListener("click", showNow);
@@ -159,3 +162,5 @@ fahrenheitLink.addEventListener("click", showFahrenheitTemperature);
 
 let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", showCelsiusTemperature);
+
+search("Odesa, Ukraine");
