@@ -1,6 +1,4 @@
-function dTime() {
-  let now = new Date();
-  let day = now.getDay();
+function formatDate(date) {
   let days = [
     "Sunday",
     "Monday",
@@ -10,8 +8,16 @@ function dTime() {
     "Friday",
     "Saturday",
   ];
-  let date = now.getDate();
-  let month = now.getMonth();
+
+  let day = days[date.getDay()];
+  let hours = String(date.getHours()).padStart(2, "0");
+  let minutes = String(date.getMinutes()).padStart(2, "0");
+
+  return `${day}, ${hours}:${minutes}`;
+}
+
+function getDayAndMonth(timestamp) {
+  let date = new Date(timestamp * 1000);
   let months = [
     "01",
     "02",
@@ -26,24 +32,52 @@ function dTime() {
     "11",
     "12",
   ];
-  let hour = now.getHours();
-  if (hour < 10) {
-    hour = `0${hour}`;
-  }
+  let days = [
+    "31",
+    "01",
+    "02",
+    "03",
+    "04",
+    "05",
+    "06",
+    "07",
+    "08",
+    "09",
+    "10",
+    "11",
+    "12",
+    "13",
+    "14",
+    "15",
+    "16",
+    "17",
+    "18",
+    "19",
+    "20",
+    "21",
+    "22",
+    "23",
+    "24",
+    "25",
+    "26",
+    "27",
+    "28",
+    "29",
+    "30",
+  ];
+  let month = date.getMonth();
+  let day = date.getDate();
 
-  let minutes = now.getMinutes();
-  if (minutes < 10) {
-    minutes = `0${minutes}`;
-  }
-  let appDate = `${date}/${months[month]} ${days[day]} ${hour}:${minutes}`;
-  let currentDate = document.querySelector("#data");
-  currentDate.innerHTML = appDate;
+  return `${days[day]}/${months[month]}`;
 }
-dTime();
 
 function comonnWeather(response) {
   console.log(response);
   let temperature = Math.round(response.data.temperature.current);
+  let icon = response.data.condition.icon_url;
+  let iconSign = document.querySelector("#icon");
+  let now = new Date();
+  let time = document.querySelector("#current-time");
   document.querySelector("#app-city").innerHTML = response.data.city;
   document.querySelector("#temp").innerHTML = `${temperature}`;
   document.querySelector("#wind").innerHTML = `Wind: ${Math.round(
@@ -54,10 +88,9 @@ function comonnWeather(response) {
   ).innerHTML = `Humidity : ${response.data.temperature.humidity}%`;
   document.querySelector("#conditions").innerHTML =
     response.data.condition.description;
-  let icon = response.data.condition.icon_url;
-  let iconSign = document.querySelector("#icon");
   iconSign.setAttribute("src", `${icon}`);
   iconSign.setAttribute("alt", response.data.condition.description);
+  time.innerHTML = formatDate(now);
 }
 
 function search(city) {
@@ -67,14 +100,12 @@ function search(city) {
   let apiUrl = `${endApiUrl}?query=${city}&key=${apiKey}&units=${units}`;
   axios.get(apiUrl).then(comonnWeather);
 }
+
 function submitCity(event) {
   event.preventDefault();
   let city = document.querySelector("#inputText").value;
   search(city);
 }
-
-let button = document.querySelector("button#search-button");
-button.addEventListener("click", submitCity);
 
 function realPosition(position) {
   let longitude = position.coords.longitude;
@@ -90,5 +121,9 @@ function showNow(event) {
   event.preventDefault();
   navigator.geolocation.getCurrentPosition(realPosition);
 }
+
+let button = document.querySelector("button#search-button");
+button.addEventListener("click", submitCity);
+
 let currentButton = document.querySelector("#currentLocationButton");
 currentButton.addEventListener("click", showNow);
