@@ -27,7 +27,11 @@ span {
 }
 
 .temperature h2 {
-  font-size: 50px;
+  position: relative;
+  font-size: 40px;
+  right: 24px;
+  bottom: -20px;
+  min-width: 300px;
   padding: 40px 0px 0px 0px;
   color: rgb(90, 98, 117);
   font-family: "Cerebri Sans", Helvetica, Arial, sans-serif;
@@ -53,7 +57,8 @@ span {
 
 .icon-style {
   position: relative;
-  top: 12px;
+  top: 17px;
+  right: 10px;
 }
 
 .current-city {
